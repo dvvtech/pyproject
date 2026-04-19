@@ -19,3 +19,4 @@ docker compose down
 test
 
 https://api.cloud-platform.pro/pyproject
+https://api.cloud-platform.pro/pyproject/health
