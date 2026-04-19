@@ -11,8 +11,8 @@ services:
       - "traefik.http.routers.pyproject-api.entrypoints=websecure"
       - "traefik.http.routers.pyproject-api.tls.certresolver=letsencrypt"
       - "traefik.http.services.pyproject-api.loadbalancer.server.port=8080"
-      - "traefik.http.middlewares.pyproject-stripprefix.stripprefix.prefixes=/pyproject"
-      - "traefik.http.routers.pyproject-api.middlewares=pyproject-stripprefix"
+      - "traefik.http.middlewares.pyproject-api-stripprefix.stripprefix.prefixes=/pyproject"
+      - "traefik.http.routers.pyproject-api.middlewares=pyproject-api-stripprefix"
     networks:
       - public-network5
 
