@@ -1,0 +1,21 @@
+services:
+  pyproject-api:
+    image: ghcr.io/dvvtech/pyproject:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pyproject-api.rule=Host(`api.cloud-platform.pro`) && PathPrefix(`/pyproject`)"
+      - "traefik.http.routers.pyproject-api.entrypoints=websecure"
+      - "traefik.http.routers.pyproject-api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.pyproject-api.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.pyproject-stripprefix.stripprefix.prefixes=/pyproject"
+      - "traefik.http.routers.pyproject-api.middlewares=pyproject-stripprefix"
+    networks:
+      - public-network5
+
+networks:
+  public-network5:
+    external: true

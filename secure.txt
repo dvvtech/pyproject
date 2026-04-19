@@ -1,0 +1,19 @@
+build: в Swarm работает не всегда так, как ожидается → лучше использовать image:
+👉 обычно делают:
+
+docker build -t testspy-project-api .
+docker push testspy-project-api
+
+и потом:
+
+image: my-api
+
+
+
+docker stack deploy -c docker-compose.yml testpy
+docker stack deploy
+
+docker compose up -d
+docker compose down
+
+test
